@@ -19,7 +19,7 @@ def calculate_bmi():
 def bmi_index(bmi):
     if bmi < 18:
         messagebox.showinfo('bmi ', f'BMI = {bmi} is Underweight')
-    elif (bmi >= 18) and (bmi > 25) :
+    elif (bmi >= 18) and (bmi < 25) :
         messagebox.showinfo('bmi', f'BMI = {bmi} is Normal')
     elif (bmi >=25) and (bmi < 30):
         messagebox.showinfo('bmi', f'BMI = {bmi} is Overweight')
@@ -32,13 +32,15 @@ def ideal_bmi():
     kg = int(weight_tf.get())
     m = int(height_tf.get()) / 100
     Age=int(age_tf.get())
+
     if var.get()== 1:
         idealbmi= 0.5 * kg / (m / 100)**2 + 11.5
         idealbmi=round(idealbmi , 2)
+        bmi_index(idealbmi)
     else:
         idealbmi=0.5 * kg / (m / 100)**2 + 0.03 * Age + 11
         idealbmi = round(idealbmi, 2)
-        ideal_index(idealbmi)
+        bmi_index(idealbmi)
 
 def ideal_index(idealbmi):
     if idealbmi < 18:
